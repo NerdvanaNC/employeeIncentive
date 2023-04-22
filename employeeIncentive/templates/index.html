@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome | Employee Incentive{% endblock title %}
+
+{% block content %}
+  <h1>Logged in!</h1>
+  <p>Logged in as: {{ user.username }}</p>
+  <a href="/users/logout/">Logout &rarr;</a>
+{% endblock content %}

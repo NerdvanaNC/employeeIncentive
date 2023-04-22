@@ -1,0 +1,42 @@
+{% extends '../base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Log In | Employee Incentive{% endblock title %}
+
+{% block content %}
+  {% if form %}
+  <form method="POST">
+    {% csrf_token %}
+
+    {% if form.errors %}
+      <div>
+        {% for error in form.errors %}
+          <p class="error">{{ error }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="input-group">
+      <label for="{{ form.email.id_for_label }}">Email:</label>
+      {{ form.email|add_class:'input' }}
+      {% if form.email.errors %}
+        <p class="error">
+          {{ form.email.errors }}
+        </p>
+      {% endif %}
+    </div>
+
+    <div class="input-group">
+      <label for="{{ form.password.id_for_label }}">Password:</label>
+      {{ form.password }}
+      {% if form.password.errors %}
+        <p class="error">
+          {{ form.password.errors }}
+        </p>
+      {% endif %}
+    </div>
+
+    <input type="submit" value="Login" />
+  </form>
+  {% endif %}
+{% endblock content %}
